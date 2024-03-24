@@ -1,7 +1,6 @@
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import configure_mappers
+from sqlalchemy.orm import sessionmaker, configure_mappers
 from models import (
-    Base, engine, Session, Movie, Actor, Director, MovieCast
+    Base, engine, Movie, Actor, Director, MovieCast
 )
 
 # Ensure all mappings are configured
@@ -52,6 +51,42 @@ def seed_database():
             "rating": 8,
             "runtime": 100,
             "director_id": 2
+        },
+        {
+            "title": "Wild Rebels",
+            "release_year": 2019,
+            "genre": "Mystery",
+            "plot": "A stock car driver goes undercover as the wheel man for a motorcycle gang.",
+            "rating": 7,
+            "runtime": 125,
+            "director_id": 4
+        },
+        {
+            "title": "Village Of The Giants",
+            "release_year": 2022,
+            "genre": "Fantasy",
+            "plot": "Delinquent teen-agers ingest a substance and grow thirty feet tall, then proceed to take over a small town.",
+            "rating": 7,
+            "runtime": 98,
+            "director_id": 2
+        },
+        {
+            "title": "Money Heist",
+            "release_year": 2017,
+            "genre": "Action",
+            "plot": "The Professor recruits a young female robber and seven other criminals for a grand heist, targeting the Royal Mint of Spain.",
+            "rating": 9,
+            "runtime": 800,
+            "director_id": 3
+        },
+        {
+            "title": "Lupin",
+            "release_year": 2021,
+            "genre": "Mystery",
+            "plot": "Inspired by the adventures of Arsène Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+            "rating": 10,
+            "runtime": 900,
+            "director_id": 4
         }
     ]
     for movie_info in movie_data:
@@ -79,6 +114,21 @@ def seed_database():
             "name": "Lupitah Nyong'o",
             "age": 41,
             "nationality": "Kenya"
+        },
+        {
+            "name": "James Lee",
+            "age": 28,
+            "nationality": "South Africa"
+        },
+        {
+            "name": "Peter Jake",
+            "age": 29,
+            "nationality": "USA"
+        },
+        {
+            "name": "Lauryn Joan",
+            "age": 35,
+            "nationality": "Kenya"
         }
     ]
     for actor_info in actor_data:
@@ -100,6 +150,26 @@ def seed_database():
         {
             "name": "Jane Julius",
             "age": 35,
+            "nationality": "Kenya"
+        },
+        {
+            "name": "Philip Jude",
+            "age": 44,
+            "nationality": "Kenya"
+        },
+        {
+            "name": "Pharell Williams",
+            "age": 31,
+            "nationality": "UK"
+        },
+        {
+            "name": "Joey Melon",
+            "age": 28,
+            "nationality": "South Africa"
+        },
+        {
+            "name": "Brenda Fay",
+            "age": 30,
             "nationality": "Kenya"
         }
     ]
@@ -126,8 +196,44 @@ def seed_database():
             "actor_id": 2
         },
         {
-            "movie_id": 3,  
+            "movie_id": 2,  
             "actor_id": 1
+        },
+        {
+            "movie_id": 3,  
+            "actor_id": 5
+        },
+        {
+            "movie_id": 3,  
+            "actor_id": 4
+        },
+        {
+            "movie_id": 4,  
+            "actor_id": 7
+        },
+        {
+            "movie_id": 4,  
+            "actor_id": 6
+        },
+        {
+            "movie_id": 5,  
+            "actor_id": 2
+        },
+        {
+            "movie_id": 5,  
+            "actor_id": 5
+        },
+        {
+            "movie_id": 6,  
+            "actor_id": 7
+        },
+        {
+            "movie_id": 7,  
+            "actor_id": 4
+        },
+        {
+            "movie_id": 7,  
+            "actor_id": 3
         }
         
     ]
