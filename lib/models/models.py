@@ -5,8 +5,6 @@ from sqlalchemy.orm import sessionmaker, relationship
 
 engine = create_engine("sqlite:///movies.db")
 
-Session = sessionmaker(bind=engine)
-
 Base = declarative_base()
 
 class Movie(Base):
@@ -72,3 +70,131 @@ class MovieCast(Base):
     def __repr__(self):
         return f"<MovieCast(movie_id={self.movie_id}, actor_id={self.actor_id})>"
       
+class MovieDatabaseManagement:
+  def __init__(self):
+    Session = sessionmaker(bind=engine)
+    self.session = Session()
+  
+  def get_all_movies(self):
+    session = self.session
+    return session.query(Movie).all()
+  
+  def display_movie_details(self, movie_id):
+    session = self.session
+    movie = session.query(Movie).filter_by(id=movie_id).first()
+    if movie:
+      return {
+                "Title": movie.title,
+                "Release Year": movie.release_year,
+                "Genre": movie.genre,
+                "Plot": movie.plot,
+                "Rating": movie.rating,
+                "Runtime": movie.runtime,
+                "Director": movie.director.name,
+                "Actors": [actor.name for actor in movie.actors]
+            }
+    return None
+  
+  def list_movies_by_genre(self, genre):
+    session = self.session
+    return session.query(Movie).filter_by(genre=genre).all()
+  
+  def list_movies_by_release_year(self, release_year):
+    session = self.session
+    return session.query(Movie).filter_by(release_year=release_year).all()
+  
+  def sort_movies_by_rating(self):
+    session = self.session
+    return session.query(Movie).order_by(Movie.rating.desc()).all()
+  
+  def get_all_actors(self):
+    session =self.session
+    return session.query(Actor).all()
+  
+  def view_actors_in_movie(self, movie_id):
+    session = self.session
+    movie = session.query(Movie).filter_by(id=movie_id).first()
+    if movie:
+      return movie.actors
+    return []
+  
+  def view_movies_by_actor(self, actor_id):
+    session = self.session
+    movies = session.query(Movie).join(MovieCast).filter(MovieCast.actor_id == actor_id).all()
+    if movies:
+      return movies
+    return []
+  
+  def get_all_directors(self):
+    session =self.session
+    return session.query(Director).all()
+      
+  def view_directors_movies(self, director_id):
+    session = self.session
+    director = session.query(Director).filter_by(id=director_id).first()
+    if director:
+        return director.movies
+    return []
+  
+  def remove_actor_from_movie(self, movie_id, actor_id):
+    session = self.session
+    movie = session.query(Movie).filter_by(id=movie_id).first()
+    if movie:
+        actor = session.query(Actor).filter_by(id=actor_id).first()
+        if actor in movie.actors:
+            movie.actors.remove(actor)
+            session.commit()
+            return True
+    return "Invalid details"
+
+  def remove_director_from_movie(self, movie_id):
+    session = self.session
+    movie = session.query(Movie).filter_by(id=movie_id).first()
+    if movie:
+        movie.director = None
+        session.commit()
+        return True
+    return False
+  
+  def add_director(self, director_data):
+    session = self.session
+    new_director = Director(**director_data)
+    session.add(new_director)
+    session.commit()
+    return new_director
+  
+  def list_top_n_movies(self, n):
+    session = self.session
+    return session.query(Movie).order_by(Movie.rating.desc()).limit(n).all()
+  
+  def update_movie_details(self, movie_id, new_details):
+    session = self.session
+    movie = session.query(Movie).filter_by(id=movie_id).first()
+    if movie:
+      for key, value in new_details.items():
+        if hasattr(movie, key):
+          setattr(movie, key, value)
+      session.commit()
+      return "Movie Updated Successfully!"
+    return "Failed to update movie details!"
+  
+  def add_movie(self, movie_data):
+    session = self.session
+    new_movie = Movie(**movie_data)
+    session.add(new_movie)
+    session.commit()
+    return new_movie
+
+  def delete_movie(self, movie_id):
+        session = self.session
+        movie = session.query(Movie).filter_by(id=movie_id).first()
+        if movie:
+            session.delete(movie)
+            session.commit()
+            return "Movie Deleted Successfully!"
+        return "Failed to delete movie!"
+  
+  def search_actors_by_name_start(self, prefix):
+        session = self.session
+        actors = session.query(Actor).filter(Actor.name.like(f"{prefix}%")).all()
+        return actors
