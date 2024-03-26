@@ -7,9 +7,10 @@ def exit_program():
     exit()
 
 def display_all_movies():
+  print("***All Movies***")
   movies = movie_manager.get_all_movies()
   for movie in movies:
-    print(f" => Id: {movie.id}, Title: {movie.title}")
+    print(f" => Id: {movie.id}, Title: {movie.title}, Rating: {movie.rating}, Release Year{movie.release_year}, Runtime: {movie.runtime}")
   print()
 
 def display_movie():
@@ -21,23 +22,28 @@ def display_movie():
 def list_movie_by_genre():
   genre = input("Enter the movie's genre: ").title()
   movies = movie_manager.list_movies_by_genre(genre=genre)
-  print(f" => {movies}")
+  print("***All Movies***")
+  for movie in movies:
+    print(f" => {movie}")
   print()
 
 def list_movie_by_release_year():
   year = input("Enter the year: ")
   movies = movie_manager.list_movies_by_release_year(release_year=year)
+  print("***Movies***")
   for movie in movies:
-    print(f" => {movie.title}")
+    print(f" => Id:{movie.id}, Title:{movie.title}, Rating: {movie.rating}, Runtime: {movie.runtime}")
   print()
 
 def list_sorted_movies_by_rating():
+  print("***Movies***")
   movies = movie_manager.sort_movies_by_rating()
   for movie in movies:
-    print(f" => Title: {movie.title}, Rating: {movie.rating}")
+    print(f" => Id: {movie.id}, Title: {movie.title}, Rating: {movie.rating}")
   print()
 
 def display_all_actors():
+  print("***Actors***")
   actors = movie_manager.get_all_actors()
   for actor in actors:
     print(f" => Id: {actor.id}, Name: {actor.name}, Age: {actor.age}, Nationality: {actor.nationality} ")
@@ -46,6 +52,7 @@ def display_all_actors():
 def view_actors_in_movie():
   movie_id = input("Enter movie's id: ")
   actors = movie_manager.view_actors_in_movie(movie_id=movie_id)
+  print(f"***Actors in Movie {movie_id}***")
   for actor in actors:
     print(f" => Id: {actor.id}, Name: {actor.name}, Age: {actor.age}, Nationality: {actor.nationality} ")
   print()
@@ -53,12 +60,14 @@ def view_actors_in_movie():
 def view_movies_by_actors():
   actor_id = input("Enter actor's Id: ")
   movies = movie_manager.view_movies_by_actor(actor_id=actor_id)
+  print(f"***All Movies by actor {actor_id}***")
   for movie in movies:
-    print(f"=> Title: {movie.title}, Release Year: {movie.release_year}, Rating: {movie.rating}")
+    print(f"=> Id: {movie.id}, Title: {movie.title}, Release Year: {movie.release_year}, Rating: {movie.rating}, Runtime: {movie.runtime} ")
   print()
 
 def display_all_directors():
   directors = movie_manager.get_all_directors()
+  print("***All Directors***")
   for director in directors:
     print(f" => Id: {director.id}, Name: {director.name}, Age: {director.age}, Nationality: {director.nationality} ")
   print()
@@ -66,8 +75,9 @@ def display_all_directors():
 def list_director_movies():
   dir_id = input("Enter the director's id: ")
   movies = movie_manager.view_directors_movies(director_id=dir_id)
+  print(f"***All Movies of director {dir_id} ***")
   for movie in movies:
-    print(f"=> Title: {movie.title}, Release Year: {movie.release_year}, Rating: {movie.rating}")
+    print(f"=> Id: {movie.id}, Title: {movie.title}, Release Year: {movie.release_year}, Rating: {movie.rating}")
   print()
   
 def remove_actor_from_movie():
@@ -148,8 +158,9 @@ def add_movie():
 def list_top_movies():
   n = int(input("How many top movies would you like to view?: "))
   movies = movie_manager.list_top_n_movies(n)
+  print(f"*** Top {n} Movies***")
   for movie in movies:
-    print(f"=> {movie.title}, {movie.rating}, {movie.release_year}")
+    print(f"=> id: {movie.id}, Title: {movie.title}, Rating: {movie.rating}, Release Year: {movie.release_year}, Runtime: {movie.runtime} ")
   print()
 
 def delete_movie():
@@ -161,6 +172,7 @@ def delete_movie():
 def search_actors():
   letter = input("Enter the beginning letter(s) of the actor's name: ")
   actors = movie_manager.search_actors_by_name_start(prefix=letter)
+  print(f"***Actors with names starting with {letter} ***")
   for actor in actors:
     print(actor)
   print()
