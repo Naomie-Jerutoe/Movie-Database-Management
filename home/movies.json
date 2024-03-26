@@ -1,0 +1,103 @@
+[
+    {
+        "Title": "The Giant Gila Monster",
+        "Release Year": 2010,
+        "Genre": "Fantasy",
+        "Plot": "A giant lizard terrorizes a rural Texas community and a heroic teenager attempts to destroy the creature.",
+        "Rating": 8,
+        "Runtime": 120,
+        "Director": "Tyler Perry",
+        "Actors": [
+            "Morgan Freeman",
+            "Sandra Bullock",
+            "Jackie Chan"
+        ]
+    },
+    {
+        "Title": "Time Chasers",
+        "Release Year": 2015,
+        "Genre": "Science-fiction",
+        "Plot": "An inventor comes up with a time machine, but must prevent its abuse at the hands of an evil C.E.O.",
+        "Rating": 7,
+        "Runtime": 110,
+        "Director": "Johnson Doe",
+        "Actors": [
+            "Morgan Freeman",
+            "Sandra Bullock"
+        ]
+    },
+    {
+        "Title": "Avatar The Last Air Bender",
+        "Release Year": 2024,
+        "Genre": "Fiction, Mystery",
+        "Plot": "Journey of twelve-year-old Aang, the current Avatar and last survivor of his nation, the Air Nomads, along with his friends Katara, Sokka, and Toph, as they strive to end the Fire Nation's war against the other nations and defeat Fire Lord Ozai before he conquers the world.",
+        "Rating": 9,
+        "Runtime": 420,
+        "Director": "Jane Julius",
+        "Actors": [
+            "Lupitah Nyong'o",
+            "James Lee"
+        ]
+    },
+    {
+        "Title": "Secret Agent Super Dragon",
+        "Release Year": 2018,
+        "Genre": "Action",
+        "Plot": "A series of murders in Michigan lead an American secret agent to Amsterdam, where he uncovers a plot to imperil the world with a potent new drug.",
+        "Rating": 8,
+        "Runtime": 100,
+        "Director": "Johnson Doe",
+        "Actors": [
+            "Peter Jake",
+            "Lauryn Joan"
+        ]
+    },
+    {
+        "Title": "Wild Rebels",
+        "Release Year": 2019,
+        "Genre": "Mystery",
+        "Plot": "A stock car driver goes undercover as the wheel man for a motorcycle gang.",
+        "Rating": 7,
+        "Runtime": 125,
+        "Director": "Philip Jude",
+        "Actors": [
+            "Sandra Bullock",
+            "James Lee"
+        ]
+    },
+    {
+        "Title": "Village Of The Giants",
+        "Release Year": 2022,
+        "Genre": "Fantasy",
+        "Plot": "Delinquent teen-agers ingest a substance and grow thirty feet tall, then proceed to take over a small town.",
+        "Rating": 7,
+        "Runtime": 98,
+        "Director": "Johnson Doe",
+        "Actors": [
+            "Lauryn Joan"
+        ]
+    },
+    {
+        "Title": "Money Heist",
+        "Release Year": 2017,
+        "Genre": "Action",
+        "Plot": "The Professor recruits a young female robber and seven other criminals for a grand heist, targeting the Royal Mint of Spain.",
+        "Rating": 9,
+        "Runtime": 800,
+        "Director": "Jane Julius",
+        "Actors": [
+            "Jackie Chan",
+            "Lupitah Nyong'o"
+        ]
+    },
+    {
+        "Title": "Lupin",
+        "Release Year": 2021,
+        "Genre": "Mystery",
+        "Plot": "Inspired by the adventures of Ars\u00e8ne Lupin, gentleman thief Assane Diop sets out to avenge his father for an injustice inflicted by a wealthy family.",
+        "Rating": 10,
+        "Runtime": 900,
+        "Director": "Philip Jude",
+        "Actors": []
+    }
+]
