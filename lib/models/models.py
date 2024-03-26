@@ -2,6 +2,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint
 from sqlalchemy.orm import sessionmaker, relationship
+import csv
+import json
+import os
 
 engine = create_engine("sqlite:///movies.db")
 
@@ -198,3 +201,49 @@ class MovieDatabaseManagement:
         session = self.session
         actors = session.query(Actor).filter(Actor.name.like(f"{prefix}%")).all()
         return actors
+
+  def export_movie_data(self, file_path, export_format):
+        movies = self.get_all_movies()
+
+        if export_format.lower() == 'csv':
+            with open(file_path, 'w', newline='') as csvfile:
+                fieldnames = ['Title', 'Release Year', 'Genre', 'Plot', 'Rating', 'Runtime', 'Director', 'Actors']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+                writer.writeheader()
+                for movie in movies:
+                    writer.writerow({
+                        'Title': movie.title,
+                        'Release Year': movie.release_year,
+                        'Genre': movie.genre,
+                        'Plot': movie.plot,
+                        'Rating': movie.rating,
+                        'Runtime': movie.runtime,
+                        'Director': movie.director.name,
+                        'Actors': ', '.join([actor.name for actor in movie.actors])
+                    })
+            return f"Movie data exported to {file_path} in CSV format."
+
+        elif export_format.lower() == 'json':
+            movie_list = []
+            for movie in movies:
+                movie_list.append({
+                    'Title': movie.title,
+                    'Release Year': movie.release_year,
+                    'Genre': movie.genre,
+                    'Plot': movie.plot,
+                    'Rating': movie.rating,
+                    'Runtime': movie.runtime,
+                    'Director': movie.director.name,
+                    'Actors': [actor.name for actor in movie.actors]
+                })
+            
+            # # Ensure the directory exists before writing the file
+            directory = os.path.dirname(file_path)
+            if not os.path.exists(directory):
+              os.makedirs(directory)
+
+            with open(file_path, 'w') as jsonfile:
+                json.dump(movie_list, jsonfile, indent=4)
+            return f"Movie data exported to {file_path} in JSON format."
+        else:
+            return "Unsupported export format. Please specify either 'csv' or 'json'."

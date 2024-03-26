@@ -165,3 +165,18 @@ def search_actors():
     print(actor)
   print()
 
+def export_movie_data():
+    file_path = input("Enter the file path: ")
+    file_format = input("Enter the export format (csv or json): ")
+
+    # Check if the format is valid
+    if file_format not in ['csv', 'json']:
+        print("Invalid format. Supported formats are 'csv' and 'json'.")
+
+    # Construct the full file path
+    full_file_path = f"{file_path}.{file_format}"
+
+    # Export movie data
+    movie_data = movie_manager.export_movie_data(file_path=full_file_path, export_format=file_format)
+    print(movie_data)
+    print()

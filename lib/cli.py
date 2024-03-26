@@ -16,7 +16,8 @@ from helpers import (
     add_movie,
     list_top_movies,
     delete_movie,
-    search_actors
+    search_actors,
+    export_movie_data
 )
 
 def main():
@@ -59,6 +60,8 @@ def main():
             delete_movie()
         elif choice == "17":
             search_actors()
+        elif choice == "18":
+            export_movie_data()
         else:
             print("Invalid Choice")
 
@@ -82,6 +85,7 @@ def menu():
     print("15. View the top movies")
     print("16. Delete a movie")
     print("17. Search actor by first letter")
+    print("18. Export movie data")
 
 if __name__ == "__main__":
     main()
