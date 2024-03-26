@@ -28,6 +28,7 @@ Naomi C. Lagat
 - **Remove Actor from Movie:** Remove an actor from the cast of a movie.
 - **Remove Director from Movie:** Remove the director from a movie.
 - **Search Actors by Name Prefix:** Search for actors whose names start with a specific prefix.
+- - **Export Movie Data:** Exports the movie data in csv or json format.
 
 ## Set Up and Installation
 
