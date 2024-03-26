@@ -9,7 +9,7 @@ def exit_program():
 def display_all_movies():
   movies = movie_manager.get_all_movies()
   for movie in movies:
-    print(f" => {movie.title}")
+    print(f" => Id: {movie.id}, Title: {movie.title}")
   print()
 
 def display_movie():
